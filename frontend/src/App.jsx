@@ -1,13 +1,32 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import Home from './pages/Home'
+import History from "./pages/History"
+import LikedVideos from "./pages/LikedVideos"
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import PrivateRoute from './components/PrivateRoute'
+import Dashboard from './pages/Dashboard'
 
 
 function App() {
   
 
   return (
-    <>
-      <h1>Helloooo</h1>
-    </>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path ='/' element={<Home />} />
+        <Route path='/history' element={<History />} />
+        <Route path='/likedVideos' element={<LikedVideos />} />
+        <Route path='/sign-in' element={<SignIn />} />
+        <Route path = '/sign-up' element={<SignUp />} />
+        <Route element={<PrivateRoute />} >
+        <Route path = '/dashboard' element={<Dashboard />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
